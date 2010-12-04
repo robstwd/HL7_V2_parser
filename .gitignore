@@ -1,0 +1,6 @@
+log/*.log
+*.log
+tmp/**/*
+tmp/*
+old/*
+autotest/*
