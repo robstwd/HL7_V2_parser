@@ -1,5 +1,5 @@
 #
-class HL7msg
+class HL7msgparser
 	@@file = "/home/rob/scripts/Projects/HL7_parser/samples/order_test.hl7"
 	
 	attr_reader :contents
@@ -31,10 +31,4 @@ class HL7msg
 	
 end
 
-msg = HL7msg.new
-#~ puts msg.contents
-#~ puts msg.num_segments
-g = msg.parse_contents
-#~ puts g.inspect
-puts msg.show_parsed_contents[1].inspect
-puts msg.show_parsed_contents[1][3]
+

@@ -1,12 +1,12 @@
-require 'hl7parser'
+require 'hl7msgparser'
 
-describe "HL7msg" do
+describe "HL7msgparser" do
 	before :each do
-		@msg = HL7msg.new #("../samples/order_test.hl7")
+		@msg = HL7msgparser.new #("../samples/order_test.hl7")
 	end
 
 	it "should exist as a class" do
-		@msg.should be_an_instance_of(HL7msg)
+		@msg.should be_an_instance_of(HL7msgparser)
 	end
 	
 	it "should read the contents of a HL7 file into an array" do 
