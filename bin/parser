@@ -1,11 +1,19 @@
 #!/usr/bin/env ruby
 
-require '../lib/hl7msgparser'
+require_relative '../lib/hl7msgparser'
 
 msg = HL7msgparser.new
-#~ puts msg.contents
 #~ puts msg.num_segments
 g = msg.parse_contents
-#~ puts g.inspect
-puts msg.show_parsed_contents[1].inspect
-puts msg.show_parsed_contents[1][3]
+#~ puts msg.inspect
+#~ puts msg.show_parsed_contents[1].inspect
+#~ puts msg.show_parsed_contents[1][3]
+#~ 
+#~ puts msg.show_parsed_contents[3][5]
+#~ 
+#~ name_array = msg.show_parsed_contents[3][5].split("^")[1]
+#~ puts name_array.inspect
+
+msg.show_parsed_contents.each do |element|
+ puts element
+end

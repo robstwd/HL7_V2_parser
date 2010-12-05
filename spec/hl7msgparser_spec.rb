@@ -9,7 +9,7 @@ describe "HL7msgparser" do
 		@msg.should be_an_instance_of(HL7msgparser)
 	end
 	
-	it "should read the contents of a HL7 file into an array" do 
+	it "should read the contents of a HL7 file into an array" do
 		@msg.class.should == Array
 	end
 	
@@ -22,4 +22,3 @@ describe "HL7msgparser" do
 	#~ end
 	
 end
-#

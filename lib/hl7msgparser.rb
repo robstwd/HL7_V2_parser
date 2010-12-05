@@ -21,7 +21,7 @@ class HL7msgparser
 	def parse_contents
 		@raw_input.each do |segment|
 			@segments << segment.split("|")
-			#~ puts segment
+			#~ @segments
 		end
 	end
 	
