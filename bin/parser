@@ -14,6 +14,7 @@ g = msg.parse_contents
 #~ name_array = msg.show_parsed_contents[3][5].split("^")[1]
 #~ puts name_array.inspect
 
+
 msg.show_parsed_contents.each do |element|
  puts element
 end
