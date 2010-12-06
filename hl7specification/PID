@@ -74,4 +74,8 @@ PID-28:
 PID-29:
   name: Patient Death Date and Time
 PID-30:
+<<<<<<< HEAD
   name: Patient Death Indicator
+=======
+  name: Patient Death Indicator
+>>>>>>> modify-spec1
