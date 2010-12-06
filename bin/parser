@@ -3,9 +3,13 @@
 require '../lib/hl7msgparser'
 
 msg = HL7msgparser.new
-#~ puts msg.contents
-#~ puts msg.num_segments
-g = msg.parse_contents
-#~ puts g.inspect
-puts msg.show_parsed_contents[1].inspect
-puts msg.show_parsed_contents[1][3]
+puts msg.raw_input
+
+puts "=========="
+msg = msg.parse_contents2
+
+puts msg.inspect
+puts "First lab test: #{msg[6][4][1]}"
+puts "Patient's first name (PID-5-2): #{msg[3][5][1]}"
+
+puts msg.getvalue("PID-5-2")

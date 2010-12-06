@@ -1,0 +1,77 @@
+---
+PID-1:
+  name: Set ID - PID
+PID-2:
+  name: Patient ID
+PID-3:
+  name: Patient Identifier List
+PID-4:
+  name: Alternate Patient ID - PID
+PID-5:
+  name: Patient Name
+PID-5-1:
+  name: Patient Name | Family+last name
+PID-5-2:
+  name: Patient Name | Given Name
+PID-5-3:
+  name: Patient Name | Middle Inintial or Name
+PID-5-4:
+  name: Patient Name | Sufix
+PID-5-5:
+  name: Patient Name | Prefix
+PID-5-6:
+  name: Patient Name | Degree 
+PID-5-7:
+  name: Patient Name | Name Type Code   
+PID-5-8:
+  name: Patient Name | Name Representation Code 
+PID-6:
+  name: Mother’s Maiden Name
+PID-7:
+  name: Date/Time of Birth
+PID-8:
+  name: Sex
+PID-9:
+  name: Patient Alias
+PID-10:
+  name: Race
+PID-11:
+  name: Patient Address
+PID-12:
+  name: County Code
+PID-13:
+  name: Phone Number - Home
+PID-14:
+  name: Phone Number - Business
+PID-15:
+  name: Primary Language
+PID-16:
+  name: Marital Status
+PID-17:
+  name: Religion
+PID-18:
+  name: Patient Account Number
+PID-19:
+  name: SSN Number - Patient
+PID-20:
+  name: Driver's License Number - Patient
+PID-21:
+  name: Mother's Identifier
+PID-22:
+  name: Ethnic Group
+PID-23:
+  name: Birth Place
+PID-24:
+  name: Multiple Birth Indicator
+PID-25:
+  name: Birth Order
+PID-26:
+  name: Citizenship
+PID-27:
+  name: Veterans Military Status
+PID-28:
+  name: Nationality 
+PID-29:
+  name: Patient Death Date and Time
+PID-30:
+  name: Patient Death Indicator
