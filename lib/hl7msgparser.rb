@@ -1,13 +1,13 @@
 #
 class HL7msgparser
-	@@file = "/home/rob/scripts/Projects/HL7_parser/samples/order_test.hl7"
+	#~ @@file = "/home/rob/scripts/Projects/HL7_parser/samples/order_test.hl7"
 	
 	attr_reader :raw_input
 	
-	def initialize
+	def initialize(file)
+		@file = file
 		# each row of the HL7 file (ie each segment) is collected in individual array elements
-		@raw_input = IO.readlines(@@file)		# ie @raw_input[1] = "BHS|^~\&|PMSX21|GX3261|QMLPTX|QML|200004120817||GX3261_00014373.ORM||2173" etc
-		@segments = []			
+		#~ @raw_input = IO.readlines(@file)		# ie @raw_input[1] = "BHS|^~\&|PMSX21|GX3261|QMLPTX|QML|200004120817||GX3261_00014373.ORM||2173" etc
 	end
 	
 	def class
@@ -19,20 +19,10 @@ class HL7msgparser
 		@raw_input.length
 	end
 	
-	# deprecated as of 6 Dec 2010
-	def parse_contents
-		@raw_input.each do |segment|
-			@segments << segment.split("|")
-			#~ @segments
-		end
-	end
-	
-	# deprecated as of 6 Dec 2010
-	def show_parsed_contents
-		@segments
-	end
-	
 	def parse_contents2
+		# each row of the HL7 file (ie each segment) is collected in individual array elements
+		@raw_input = IO.readlines(@file)		# ie @raw_input[1] = "BHS|^~\&|PMSX21|GX3261|QMLPTX|QML|200004120817||GX3261_00014373.ORM||2173" etc
+		
 		# I suspect this can be way more elegant, but laid out in this stepwise fashion as I figure out what is required/works
 	
     # 1) remove extraneous carriage returns & line feeds ("\r\n") at the end of each line

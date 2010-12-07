@@ -2,7 +2,7 @@ require 'hl7msgparser'
 
 describe "HL7msgparser" do
 	before :each do
-		@msg = HL7msgparser.new #("../samples/order_test.hl7")
+		@msg = HL7msgparser.new("/home/rob/scripts/Projects/HL7_parser/samples/order_test.hl7")
 	end
 
 	it "should exist as a class" do

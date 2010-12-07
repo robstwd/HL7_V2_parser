@@ -2,15 +2,21 @@
 
 require_relative '../lib/hl7msgparser'
 
-msg = HL7msgparser.new
-puts msg.raw_input
+msg = HL7msgparser.new("/home/rob/scripts/Projects/HL7_parser/samples/order_test.hl7")
+puts msg.methods.sort
 
 puts "=========="
 msg = msg.parse_contents2
+puts msg.methods.sort
 
 puts msg.inspect
+puts "=========="
+
 puts "First lab test: #{msg[6][4][1]}"
 puts "Patient's first name (PID-5-2): #{msg[3][5][1]}"
 
-#~ puts msg.getvalue("PID-5-2")
-
+puts msg.getvalue("PID-5-2")
+puts "=========="
+puts msg[3].inspect
+msg.each_with_index { |segment, index| puts "Segment #{index+1}: #{segment[0]}" }
+puts msg.class
