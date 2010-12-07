@@ -3,23 +3,6 @@
 require_relative '../lib/hl7msgparser'
 
 msg = HL7msgparser.new
-<<<<<<< HEAD
-#~ puts msg.num_segments
-g = msg.parse_contents
-#~ puts msg.inspect
-#~ puts msg.show_parsed_contents[1].inspect
-#~ puts msg.show_parsed_contents[1][3]
-#~ 
-#~ puts msg.show_parsed_contents[3][5]
-#~ 
-#~ name_array = msg.show_parsed_contents[3][5].split("^")[1]
-#~ puts name_array.inspect
-
-
-msg.show_parsed_contents.each do |element|
- puts element
-end
-=======
 puts msg.raw_input
 
 puts "=========="
@@ -29,9 +12,5 @@ puts msg.inspect
 puts "First lab test: #{msg[6][4][1]}"
 puts "Patient's first name (PID-5-2): #{msg[3][5][1]}"
 
-<<<<<<< HEAD
-puts msg.getvalue("PID-5-2")
->>>>>>> modify-spec1
-=======
 #~ puts msg.getvalue("PID-5-2")
->>>>>>> modify-spec1
+
