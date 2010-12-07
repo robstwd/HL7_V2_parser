@@ -12,4 +12,4 @@ puts msg.inspect
 puts "First lab test: #{msg[6][4][1]}"
 puts "Patient's first name (PID-5-2): #{msg[3][5][1]}"
 
-puts msg.getvalue("PID-5-2")
+#~ puts msg.getvalue("PID-5-2")
