@@ -1,11 +1,12 @@
 #
 
-require 'yaml'
-
 module HL7parser
+
 	@parsed_content = []
 		
 	class Message
+		
+		require 'yaml'
 		
 		def initialize(file)
 			@file = file
@@ -95,24 +96,32 @@ module HL7parser
 			end
 			
 	  end	 # << end getvalue method
-	  
+
 	  def print_segments
-			#get yaml file details
-			segment   = "PID"
-			#~ yamlfile  = "../hl7specification/#{segment}"
-			#~ @details  = YAML::load(File.read(yamlfile)) 
 			
-			
-			
-			puts ":: Segment: Patient Identification"
-			
-			@parsed_content[3].each_with_index do |field, index|
-				if field.class == String then
-					puts "#{segment}-#{index}: #{field}"
-				elsif field.class == Array then
-				  puts "#{segment}-#{index}: #{field.inspect}"
-				end  
-		end		
+			# iterate over each segment
+			@parsed_content.each do |segment|
+				seg = segment[0]																  # seg => "PID"
+				
+				#get yaml file details
+				yamlfile  = "../hl7specification/#{seg}"
+				details   = YAML.load_file(yamlfile)
+				
+			  puts ":: Segment: #{seg}"				                  # print the text eg ":: Segment: 4 PID"
+				segment.each_with_index do |field, index|					# then for each field in the particular segment
+					fld = "#{seg}-#{index}"									       	# fld => "PID-5"
+					print "#{fld}: <<name>> => "						       	# on each line print "PID-5: <<name>> => "
+					#~ name = details[fld]["name"]
+					if field.class == String then												# if the field is a string...
+						#~ puts "#{details[fld]["name"]} => #{field}"			# then just print the string with a label eg "PID-7: 19770621"
+						puts field
+					elsif field.class == Array then											# otherwise if the field is an array, ie there is lower level structure...
+						#~ puts "#{fld}: #{details[fld]["name"]} => #{field.inspect}"		      # then print the structure viz => PID-5: ["SMITH", "Alan", "Ross", "", "Mr"]
+						puts field.inspect	
+					end  
+				end	
+				puts	
+		  end
 	  
 	  end  # << end print_segments method
 	  	  
