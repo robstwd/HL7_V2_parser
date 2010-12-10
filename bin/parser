@@ -1,22 +1,40 @@
 #!/usr/bin/env ruby
 
+require 'date'
+require 'time'
+
 require_relative '../lib/hl7msgparser'
 
-msg = HL7msgparser.new("/home/rob/scripts/Projects/HL7_parser/samples/order_test.hl7")
-puts msg.methods.sort
+#~ msg = HL7msgparser.new("/home/rob/scripts/Projects/HL7_parser/samples/order_test.hl7")
+#~ puts msg.methods.sort
+#~ 
+#~ puts "=========="
+#~ msg = msg.parse_contents2
+#~ puts msg.methods.sort
+#~ 
+#~ puts msg.inspect
+#~ puts "=========="
+#~ 
+#~ puts "First lab test: #{msg[6][4][1]}"
+#~ puts "Patient's first name (PID-5-2): #{msg[3][5][1]}"
+#~ 
+#~ puts msg.getvalue("PID-5-2")
+#~ puts "=========="
+#~ puts msg[3].inspect
+#~ msg.each_with_index { |segment, index| puts "Segment #{index+1}: #{segment[0]}" }
+#~ puts msg.class
 
-puts "=========="
-msg = msg.parse_contents2
-puts msg.methods.sort
+# invocation tests
+file = "/home/rob/scripts/Projects/HL7_parser/samples/order_test.hl7"
+msg = HL7parser::Message.new(file)
+msg.parse_contents
 
-puts msg.inspect
-puts "=========="
-
-puts "First lab test: #{msg[6][4][1]}"
-puts "Patient's first name (PID-5-2): #{msg[3][5][1]}"
-
-puts msg.getvalue("PID-5-2")
-puts "=========="
-puts msg[3].inspect
-msg.each_with_index { |segment, index| puts "Segment #{index+1}: #{segment[0]}" }
-puts msg.class
+puts "Patient's first name (PID-5-2): #{msg.getvalue("PID-5-2")}"
+puts
+puts "Patient's Date/Time of Birth (PID-7): #{Date.parse(msg.getvalue("PID-7"))}"
+puts
+puts "complete PID segment: #{msg.getvalue("PID")}"
+puts
+puts "HL7 message version number (MSH-11): #{msg.getvalue("MSH-11")}"
+puts
+puts "Message sent at (MSH-6): #{Time.parse(msg.getvalue("MSH-6"))}"

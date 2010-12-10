@@ -1,89 +1,85 @@
 #
-class HL7msgparser
-	#~ @@file = "/home/rob/scripts/Projects/HL7_parser/samples/order_test.hl7"
-	
-	attr_reader :raw_input
-	
-	def initialize(file)
-		@file = file
-		# each row of the HL7 file (ie each segment) is collected in individual array elements
-		#~ @raw_input = IO.readlines(@file)		# ie @raw_input[1] = "BHS|^~\&|PMSX21|GX3261|QMLPTX|QML|200004120817||GX3261_00014373.ORM||2173" etc
-	end
-	
-	def class
-		@raw_input.class
-	end
-	
-	def num_segments
-		#~ "Number of segments: #{@raw_input.length}"
-		@raw_input.length
-	end
-	
-	def parse_contents2
-		# each row of the HL7 file (ie each segment) is collected in individual array elements
-		@raw_input = IO.readlines(@file)		# ie @raw_input[1] = "BHS|^~\&|PMSX21|GX3261|QMLPTX|QML|200004120817||GX3261_00014373.ORM||2173" etc
+module HL7parser
+	@parsed_content = []
 		
-		# I suspect this can be way more elegant, but laid out in this stepwise fashion as I figure out what is required/works
-	
-    # 1) remove extraneous carriage returns & line feeds ("\r\n") at the end of each line
-    @raw_input.collect! { |segment| segment.chomp}
-    
-    # 2) remove extraneous double "\\"
-    #@raw_input.collect! { |segment| segment.gsub(/\\/,"\\") } - <<doesn't quite work - finds the '\\' but doesn't replace with one \>>
-	
-		# 2) parse each segment into the various elements, as separated by "|" (eg ["BTS|1", "FTS|1|2173"] => [["BTS", "1"], ["FTS", "1", "2173"]])
-		#    ie create a nested multidimensional array with each segment represented by the first dimension 
-		#    and the second dimension representing each element within the segment
-		@raw_input.collect! { |x| x.split("|")}
+	class Message
 		
-		# 3) then parse each element where multiples are present, as separated by "~" (eg "P00057804^^^^PN~4009887514^^^AUSHIC^MC~SMIAL001^^^^PI" => ["P00057804^^^^PN", "4009887514^^^AUSHIC^MC", "SMIAL001^^^^PI"])
-		@raw_input.each do |x|					# for each array element which is one segment of the HL7 message
-			x.collect! do |y| 						# then for each second dimension element
-				if y.include?("~") then			# if the sub-element contains the multiplicity delimiter, then 
-					y.split("~")							# split that subelement into further sub-sub-elements using the "~" to separate the values
-				else                        # if there is no multiple values then...
-					y													# just return the value unchanged
+		def initialize(file)
+			@file = file
+	  end
+	  
+		def parse_contents
+			@raw_input = IO.readlines(@file)
+			@segment_list   = []
+			@raw_input.each { |segment | @segment_list << segment[0..2] }
+			@raw_input.collect! { |segment| segment.chomp}
+			@raw_input.collect! { |x| x.split("|")}
+			@raw_input.each do |x|						# for each array element which is one segment of the HL7 message
+				x.collect! do |y| 							# then for each second dimension element
+					if y.include?("~") then				# if the sub-element contains the multiplicity delimiter, then 
+						y.split("~")								# split that subelement into further sub-sub-elements using the "~" to separate the values
+					else                       		# if there is no multiple values then...
+						y														# just return the value unchanged
+					end	
 				end	
-			end	
-		end
-		
-		# 4) then parse each element into its subcomponents, separated by "^" (eg "SMITH^Alan^Ross^^Mr" => ["SMITH", "Alan", "Ross", "", "Mr"])
-		#    this is required for second level sub-elements as well as third level sub-sub-elements
-		@raw_input.each do |x|						# for each array element which is one segment of the HL7 message, further divided into sub-elements
-			x.collect! do |y| 							# for each of those sub-elements
-				if y.class == Array then			# if the sub-element is further divided into sub-sub-elements (and is therefore an array)....
-					y.collect! do |z|						# for each of those sub-sub-elements
-						if z.include?("^") then		# if the sub-sub-element contains the delimiter "^" then...
-							z.split("^")						# further divide the value into its component parts
-						else                      # otherwise if no subcomponent parts...
-						  z												# just return the value unaltered
+			end
+			
+			@raw_input.each do |x|						# for each array element which is one segment of the HL7 message, further divided into sub-elements
+				x.collect! do |y| 							# for each of those sub-elements
+					if y.class == Array then			# if the sub-element is further divided into sub-sub-elements (and is therefore an array)....
+						y.collect! do |z|						# for each of those sub-sub-elements
+							if z.include?("^") then		# if the sub-sub-element contains the delimiter "^" then...
+								z.split("^")						# further divide the value into its component parts
+							else                      # otherwise if no subcomponent parts...
+								z												# just return the value unaltered
+							end
 						end
-					end
-				elsif y.include?("^") then		# however if the sub-element is not an array and the values do contain "^"...
-					y.split("^")								# further divide the value into its component parts
-				else                		      # otherwise if no subcomponent parts...
-				  y														# just return the value unaltered
-				end  
-			end	
-		end
-		
-	end
-		
-	# ideally it would be nice to be able to use the normal HL7 conventions
-	# ie puts msg(PID-5-2) for patient's given name
-	# needs more work, but this is the general idea.....
+					elsif y.include?("^") then		# however if the sub-element is not an array and the values do contain "^"...
+						y.split("^")								# further divide the value into its component parts
+					else                		      # otherwise if no subcomponent parts...
+						y														# just return the value unaltered
+					end  
+				end	
+			end
+			
+			@parsed_content = @raw_input
+			
+		end	  # << end parse_contents method
+	  
+	  def getvalue(element)
+			elements         = element.split("-")			# "PID-5-2" => ["PID", "5", "2"]
+			segment          = elements[0]
+			field            = elements[1]
+			component        = elements[2]
+			subcomponent     = elements[3]
+			subsubcomponent  = elements[4]
 
-	def getvalue(element)
-		components  = element.split("-")			# "PID-5-2" => ["PID", "5", "2"]
-		segment     = components[0]
-		dimension1  = components[1]
-		dimension2  = components[2]
-		dimension3  = components[3]
-		dimension4  = components[4]
-		@raw_input[segment][dimension1][dimension2][dimension3][dimension4]
-	end	
-		
-	
-end
+			# get segment position
+			segment_position = @segment_list.find_index(segment)
+			
+			# get field position
+			field_position = field.to_i if field != nil
+			
+			# get component position
+			component_position = component.to_i - 1 if component != nil
+			
+			# construct value get statement
+			if (segment_position != nil) and (field_position == nil) and (component_position == nil) then
+				@parsed_content[segment_position]
+			elsif (segment_position != nil) and (field_position != nil) and (component_position == nil) then
+				@parsed_content[segment_position][field_position]
+			elsif (segment_position != nil) and (field_position != nil) and (component_position != nil) then
+				@parsed_content[segment_position][field_position][component_position]
+			end
+			
+	  end	 # << end getvalue method
+	  
+	  def print_segments
+	  
+	  end  # << end print_segments method
+	  	  
+	end  # << end Message class
+
+end  # << end HL7parser module
 
 
