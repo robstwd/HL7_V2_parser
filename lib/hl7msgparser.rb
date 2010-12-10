@@ -9,13 +9,26 @@ module HL7parser
 	  end
 	  
 		def parse_contents
-			@raw_input = IO.readlines(@file)
-			@segment_list   = []
-			@raw_input.each { |segment | @segment_list << segment[0..2] }
+		# METHOD: parse the delimited character strings of a HL7 message into a multi-dimensinal array, to allow positional searching
+		
+			# read lines of the file into an array, each line as a separate element
+			@raw_input = IO.readlines(@file)	# ie @raw_input[1] = "BHS|^~\&|PMSX21|GX3261|QMLPTX|QML|200004120817||GX3261_00014373.ORM||2173" etc
+			
+			# create an array to read the segment names eg => ["MSH", "PID", "PV1", "ORC", "OBR", "OBX"]; refer method 'getvalue', used to find the segment index
+			@segment_list   = []			# initialise the array
+			@raw_input.each { |segment| @segment_list << segment[0..2] }		# the array collects just the first 3 characters of each segment
+			
+			# remove extraneous carriage returns & line feeds ("\r\n") at the end of each line
 			@raw_input.collect! { |segment| segment.chomp}
+			
+			# parse each segment into the various elements, as separated by "|" (eg ["BTS|1", "FTS|1|2173"] => [["BTS", "1"], ["FTS", "1", "2173"]])
+			# ie create a nested multidimensional array with each segment represented by the first dimension 
+			# and the second dimension representing each field within the segment
 			@raw_input.collect! { |x| x.split("|")}
+			
+			# then parse each element where multiples are present, as separated by "~" (eg "P00057804^^^^PN~4009887514^^^AUSHIC^MC~SMIAL001^^^^PI" => ["P00057804^^^^PN", "4009887514^^^AUSHIC^MC", "SMIAL001^^^^PI"])	
 			@raw_input.each do |x|						# for each array element which is one segment of the HL7 message
-				x.collect! do |y| 							# then for each second dimension element
+				x.collect! do |y| 							# then for each field (second dimension element)
 					if y.include?("~") then				# if the sub-element contains the multiplicity delimiter, then 
 						y.split("~")								# split that subelement into further sub-sub-elements using the "~" to separate the values
 					else                       		# if there is no multiple values then...
@@ -24,6 +37,7 @@ module HL7parser
 				end	
 			end
 			
+			# then parse each element into its subcomponents, separated by "^" (eg "SMITH^Alan^Ross^^Mr" => ["SMITH", "Alan", "Ross", "", "Mr"])
 			@raw_input.each do |x|						# for each array element which is one segment of the HL7 message, further divided into sub-elements
 				x.collect! do |y| 							# for each of those sub-elements
 					if y.class == Array then			# if the sub-element is further divided into sub-sub-elements (and is therefore an array)....
@@ -42,19 +56,24 @@ module HL7parser
 				end	
 			end
 			
+			# finalise the array with contents for later searching
 			@parsed_content = @raw_input
 			
 		end	  # << end parse_contents method
 	  
 	  def getvalue(element)
+	  # METHOD: returns the value of a given aspoect of teh message by virtue of its position
+	  # allows returning the segment value in total eg getvalue("PID"), down to the atomic element eg getvalue("PID-5-2")
+ 	  
+			# separate the single arguemnt passed into the various elements
 			elements         = element.split("-")			# "PID-5-2" => ["PID", "5", "2"]
-			segment          = elements[0]
-			field            = elements[1]
-			component        = elements[2]
-			subcomponent     = elements[3]
-			subsubcomponent  = elements[4]
+			segment          = elements[0]						# segment   => "PID"
+			field            = elements[1]						# field		  => "5"  
+			component        = elements[2]						# component => "2"
+			subcomponent     = elements[3]						# subcomponent => nil (in the above example)
+			subsubcomponent  = elements[4]						# subsubcomponent => nil (in the above example)
 
-			# get segment position
+			# get segment position, using the segment array created above
 			segment_position = @segment_list.find_index(segment)
 			
 			# get field position
