@@ -1,4 +1,7 @@
 #
+
+require 'yaml'
+
 module HL7parser
 	@parsed_content = []
 		
@@ -94,6 +97,22 @@ module HL7parser
 	  end	 # << end getvalue method
 	  
 	  def print_segments
+			#get yaml file details
+			segment   = "PID"
+			#~ yamlfile  = "../hl7specification/#{segment}"
+			#~ @details  = YAML::load(File.read(yamlfile)) 
+			
+			
+			
+			puts ":: Segment: Patient Identification"
+			
+			@parsed_content[3].each_with_index do |field, index|
+				if field.class == String then
+					puts "#{segment}-#{index}: #{field}"
+				elsif field.class == Array then
+				  puts "#{segment}-#{index}: #{field.inspect}"
+				end  
+		end		
 	  
 	  end  # << end print_segments method
 	  	  
@@ -101,4 +120,8 @@ module HL7parser
 
 end  # << end HL7parser module
 
-
+		
+        # initialise the variable holding the complete YAML file contents, as a hash
+    #~ @detail       = @details[@station]                       # get just the detail pertaining to the station of interest
+    #~ @url          = "#{@@baseurl}#{@detail["id"]}"           # construct the full internode URL, using the base and the looked up ID number for the particular station
+    #~ @stationname  = @detail["title"]  

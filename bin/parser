@@ -38,3 +38,5 @@ puts
 puts "HL7 message version number (MSH-11): #{msg.getvalue("MSH-11")}"
 puts
 puts "Message sent at (MSH-6): #{Time.parse(msg.getvalue("MSH-6"))}"
+puts
+msg.print_segments
