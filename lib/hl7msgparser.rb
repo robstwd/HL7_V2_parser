@@ -1,4 +1,5 @@
-#
+# much of the following would clearly be written much more elegantly than I have created. The 'step-wise' approach has been more for my own 
+# process to just make it work and to understand what is happening
 
 module HL7parser
 
@@ -31,17 +32,17 @@ module HL7parser
 			@raw_input.collect! { |x| x.split("|")}
 			
 			# re-add an element for 'file field separator' ("|") for the segments FHS, BHS & MSH
-			@raw_input.each do |segment|
-				if segment[0] == "MSH" then
-					segment.insert(1,"|")		# insert into the array, into position 1, the value "|"
-				elsif segment[0] == "BHS" then
-					segment.insert(1,"|")		# insert into the array, into position 1, the value "|"
-				elsif segment[0] == "FHS" then
-					segment.insert(1,"|")		# insert into the array, into position 1, the value "|"	
+			encodingchar = ""										# prepare to get the value of the encoding characters for later re-insertion into the array (ie "^~\&")	
+			@raw_input.each do |segment|				# iterate over each segment
+				if segment[0] == "MSH" then				# when it is the MSH segment, then
+					segment.insert(1,"|")						# insert the value "|" into the array, at position 1
+					encodingchar = segment[2]				# collect the value of the encoding characters
+				elsif segment[0] == "BHS" then	  # when it is the BSH segment, then
+					segment.insert(1,"|")						# insert the value "|" into the array, at position 1
+				elsif segment[0] == "FHS" then	  # when it is the FSH segment, then
+					segment.insert(1,"|")						# insert the value "|" into the array, at position 1
 				end	
 			end	
-			
-			puts @raw_input.inspect
 			
 			# then parse each element where multiples are present, as separated by "~" (eg "P00057804^^^^PN~4009887514^^^AUSHIC^MC~SMIAL001^^^^PI" => ["P00057804^^^^PN", "4009887514^^^AUSHIC^MC", "SMIAL001^^^^PI"])	
 			@raw_input.each do |x|						# for each array element which is one segment of the HL7 message
@@ -53,7 +54,7 @@ module HL7parser
 					end	
 				end	
 			end
-			
+						
 			# then parse each element into its subcomponents, separated by "^" (eg "SMITH^Alan^Ross^^Mr" => ["SMITH", "Alan", "Ross", "", "Mr"])
 			@raw_input.each do |x|						# for each array element which is one segment of the HL7 message, further divided into sub-elements
 				x.collect! do |y| 							# for each of those sub-elements
@@ -70,6 +71,20 @@ module HL7parser
 					else                		      # otherwise if no subcomponent parts...
 						y														# just return the value unaltered
 					end  
+				end	
+			end
+						
+			# replace the 'encoding character' values ("^~\&")as they were removed in the above operations
+			# almost works; ie returns "FHS-2: File Encoding Characters => ["^~\\&"]"
+			# TODO: better result would be "FHS-2: File Encoding Characters => ^~\&"
+			@raw_input.each do |segment|							# iterate over each segment
+				#~ puts segment.inspect
+				if segment[0] == "MSH" then							# when it is the MSH segment, then
+					segment[2].replace([encodingchar])		# replace the existing value with the encoding characters, determined earlier (ie "^~\\&")
+				elsif segment[0] == "BHS" then					# when it is the BHS segment, then
+					segment[2].replace([encodingchar])		# replace the existing value with the encoding characters, determined earlier (ie "^~\\&")
+				elsif segment[0] == "FHS" then					# when it is the FHS segment, then
+					segment[2].replace([encodingchar])		# replace the existing value with the encoding characters, determined earlier (ie "^~\\&")
 				end	
 			end
 			

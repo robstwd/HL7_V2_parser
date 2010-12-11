@@ -25,4 +25,5 @@ puts
 puts "complete BHS segment: #{msg.getvalue("BHS")}"
 puts
 puts "complete MSH segment: #{msg.getvalue("MSH")}"
+puts
 msg.print_segments
