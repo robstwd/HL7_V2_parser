@@ -1,27 +1,46 @@
 ---
+Header:
+  name: Common Order Segment 
+  version: 2.3.1
 ORC-0:
   name: Segment name
 ORC-1:
-  name: Set ID - PID
+  name: Order Control
 ORC-2:
-  name: sth_orc
+  name: Placer Order Number
 ORC-3:
-  name: sth_orc
+  name: Filler Order Number
 ORC-4:
-  name: sth_orc
+  name: Placer Group Number
 ORC-5:
-  name: sth_orc
+  name: Order Status
 ORC-6:
-  name: sth_orc
+  name: Response Flag
 ORC-7:
-  name: sth_orc
+  name: Quantity/Timing
 ORC-8:
-  name: sth_orc
+  name: Parent
 ORC-9:
-  name: sth_orc
+  name: Date/Time of Transaction
 ORC-10:
-  name: sth_orc
+  name: Entered By
 ORC-11:
-  name: sth_orc
+  name: Verified By
 ORC-12:
-  name: sth_orc
+  name: Ordering Provider
+ORC-13:
+  name: Enterer's Location
+ORC-14:
+  name: Call Back Phone Number
+ORC-15:
+  name: Order Effective Date/Time
+ORC-16:
+  name: Order Control Code Reason
+ORC-17:
+  name: Entering Organization
+ORC-18:
+  name: Entering Device
+ORC-19:
+  name: Action By
+ORC-20:
+  name: Advanced Beneficiary Notice Code

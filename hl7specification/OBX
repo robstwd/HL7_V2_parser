@@ -1,57 +1,40 @@
 ---
+Header:
+  name: Observation / Result Segment 
+  version: 2.3.1
 OBX-0:
   name: Segment name
 OBX-1:
-  name: Set ID - PID
+  name: Set ID - OBX
 OBX-2:
-  name: sth_obx
+  name: Value Type
 OBX-3:
-  name: sth_obx
+  name: Observation Identifier
 OBX-4:
-  name: sth_obx
+  name: Observation Sub-ID
 OBX-5:
-  name: sth_obx
+  name: Observation Value
 OBX-6:
-  name: sth_obx
+  name: Units
 OBX-7:
-  name: sth_obx
+  name: References Range
 OBX-8:
-  name: sth_obx
+  name: Abnormal Flags
 OBX-9:
-  name: sth_obx
+  name: Probability
 OBX-10:
-  name: sth_obx
+  name: Nature of Abnormal Test
 OBX-11:
-  name: sth_obx
+  name: Observation Result Status
 OBX-12:
-  name: sth_obx
+  name: Date Last Observation Normal Value
 OBX-13:
-  name: sth_obx
+  name: User Defined Access Checks
 OBX-14:
-  name: sth_obx
+  name: Date/Time of the Observation
 OBX-15:
-  name: sth_obx
+  name: Producer's ID
 OBX-16:
-  name: sth_obx
+  name: Responsible Observer
 OBX-17:
-  name: sth_obx
-OBX-18:
-  name: sth_obx
-OBX-19:
-  name: sth_obx
-OBX-20:
-  name: sth_obx
-OBX-21:
-  name: sth_obx
-OBX-22:
-  name: sth_obx
-OBX-23:
-  name: sth_obx
-OBX-24:
-  name: sth_obx
-OBX-25:
-  name: sth_obx
-OBX-26:
-  name: sth_obx
-OBX-27:
-  name: sth_obx
+  name: Observation Method

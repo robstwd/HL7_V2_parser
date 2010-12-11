@@ -1,23 +1,30 @@
 ---
+Header:
+  name: File Header Segment 
+  version: 2.3.1
 FHS-0:
   name: Segment
 FHS-1:
-  name: FHS-1_name
+  name: File Field Separator
 FHS-2:
-  name: FHS-2_name
+  name: File Encoding Characters
 FHS-3:
-  name: FHS-3_name
+  name: File Sending Application
 FHS-4:
-  name: FHS-4_name
+  name: File Sending Facility
 FHS-5:
-  name: FHS-5_name
+  name: File Receiving Application
 FHS-6:
-  name: FHS-6_name
+  name: File Receiving Facility
 FHS-7:
-  name: FHS-7_name
+  name: File Creation Date/Time
 FHS-8:
-  name: FHS-8_name
+  name: File Security
 FHS-9:
-  name: FHS-9_name
+  name: File Name/ID
 FHS-10:
-  name: FHS-10_name
+  name: File Header Comment
+FHS-11:
+  name: File Control ID
+FHS-12:
+  name: Reference File Control ID

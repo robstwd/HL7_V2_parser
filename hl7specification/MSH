@@ -1,35 +1,46 @@
 ---
+Header:
+  name: Message Header Segment 
+  version: 2.3.1
 MSH-0:
   name: Segment name
 MSH-1:
-  name: Set ID - PID
+  name: Field Separator
 MSH-2:
-  name: sth_msh
+  name: Encoding Characters
 MSH-3:
-  name: sth_msh
+  name: Sending Application
 MSH-4:
-  name: sth_msh
+  name: Sending Facility
 MSH-5:
-  name: sth_msh
+  name: Receiving Application
 MSH-6:
-  name: sth_msh
+  name: Receiving Facility
 MSH-7:
-  name: sth_msh
+  name: Date/Time Of Message
 MSH-8:
-  name: sth_msh
+  name: Security
 MSH-9:
-  name: sth_msh
+  name: Message Type
 MSH-10:
-  name: sth_msh
+  name: Message Control ID
 MSH-11:
-  name: sth_msh
+  name: Processing ID
 MSH-12:
-  name: sth_msh
+  name: Version ID
 MSH-13:
-  name: sth_msh
+  name: Sequence Number
 MSH-14:
-  name: sth_msh
+  name: Continuation Pointer
 MSH-15:
-  name: sth_msh
+  name: Accept Acknowledgment Type
 MSH-16:
-  name: sth_msh
+  name: Application Acknowledgment Type
+MSH-17:
+  name: Country Code
+MSH-18:
+  name: Character Set
+MSH-19:
+  name: Principal Language Of Message
+MSH-20:
+  name: Alternate Character Set Handling Scheme

@@ -1,4 +1,7 @@
 ---
+Header:
+  name: Patient Identification Segment 
+  version: 2.3.1
 PID-0:
   name: Segment
 PID-1:

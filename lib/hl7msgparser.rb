@@ -122,22 +122,24 @@ module HL7parser
 				yamlfile  = "../hl7specification/#{seg}"					# for each segment, find the appropriate yaml file (ie one for each segment)
 				specs     = YAML.load_file(yamlfile)							# load the yaml file
 				
-			  puts ":: Segment: #{seg}"				                  # print the text eg ":: Segment: PID"
+			  puts ":: #{specs["Header"]["name"]} (#{seg})"			# print the text eg ":: Message Header Segment (MSH)"
 			  
 			  # then iterate over each field in the particular segment
 				segment.each_with_index do |field, index|					# then for each field...
-					fld = "#{seg}-#{index}"									       	# get the field id => "PID-5"
-					print "#{fld}: "						       							# on each line print the particular field being queried eg "PID-5: "
-					fldname = specs[fld]["name"]										# get the name of the field from the yaml file
-					print "#{fldname} => "													# print the field name after the field eg "PID-5: Patient Name"
-					if field.class == String then										# if the field class is a string...
-						puts field																		# then just print (ie add) the value of the string eg "PID-7: Date/Time of Birth => 19770621"
-					elsif field.class == Array then									# otherwise if the field is an array, ie there is lower level structure...
-						puts field.inspect														# then print the structure eg "PID-5 Patient Name => ["SMITH", "Alan", "Ross", "", "Mr"]"
-					end  
-				end	
+					if index > 0 then																# only if the index is 1 or more (ie the first value is not useful here)
+						fld = "#{seg}-#{index}"									      # get the field id => "PID-5"
+						print "#{fld}: "						       						# on each line print the particular field being queried eg "PID-5: "
+						fldname = specs[fld]["name"]									# get the name of the field from the yaml file
+						print "#{fldname} => "												# print the field name after the field eg "PID-5: Patient Name"
+						if field.class == String then									# if the field class is a string...
+							puts field																	# then just print (ie add) the value of the string eg "PID-7: Date/Time of Birth => 19770621"
+						elsif field.class == Array then								# otherwise if the field is an array, ie there is lower level structure...
+							puts field.inspect													# then print the structure eg "PID-5 Patient Name => ["SMITH", "Alan", "Ross", "", "Mr"]"
+						end  # << end if field...
+					end  # << end if index > 0  
+				end	  # << end segment.each_with_index
 				puts	
-		  end
+		  end	  # << end @parsed_content.each
 	  
 	  end  # << end print_segments method
 	  	  

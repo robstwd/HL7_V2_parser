@@ -1,57 +1,100 @@
 ---
+Header:
+  name: Observation Request Segment 
+  version: 2.3.1
 OBR-0:
   name: Segment name
 OBR-1:
-  name: Set ID - PID
+  name: Set ID OBR
 OBR-2:
-  name: sth_obr
+  name: Placer Order Number
 OBR-3:
-  name: sth_obr
+  name: Filler Order Number
 OBR-4:
-  name: sth_obr
+  name: Universal Service ID
 OBR-5:
-  name: sth_obr
+  name: Priority
 OBR-6:
-  name: sth_obr
+  name: Requested Date/time
 OBR-7:
-  name: sth_obr
+  name: Observation Date/Time
 OBR-8:
-  name: sth_obr
+  name: Observation End Date/Time
 OBR-9:
-  name: sth_obr
+  name: Collection Volume
 OBR-10:
-  name: sth_obr
+  name: Collector Identifier
 OBR-11:
-  name: sth_obr
+  name: Specimen Action Code
 OBR-12:
-  name: sth_obr
+  name: Danger Code
 OBR-13:
-  name: sth_obr
+  name: Relevant Clinical Info.
 OBR-14:
-  name: sth_obr
+  name: Specimen Received Date/Time
 OBR-15:
-  name: sth_obr
+  name: Specimen Source
 OBR-16:
-  name: sth_obr
+  name: Ordering Provider
 OBR-17:
-  name: sth_obr
+  name: Order Callback Phone Number
 OBR-18:
-  name: sth_obr
+  name: Placer Field 1
 OBR-19:
-  name: sth_obr
+  name: Placer Field 2
 OBR-20:
-  name: sth_obr
+  name: Filler Field 1
 OBR-21:
-  name: sth_obr
+  name: Filler Field 2
 OBR-22:
-  name: sth_obr
+  name: Results Rpt/Status Chng - Date/Time
 OBR-23:
-  name: sth_obr
+  name: Charge to Practice
 OBR-24:
-  name: sth_obr
+  name: Diagnostic Serv Sect ID
 OBR-25:
-  name: sth_obr
+  name: Result Status
 OBR-26:
-  name: sth_obr
+  name: Parent Result
 OBR-27:
-  name: sth_obr
+  name: Quantity/Timing
+OBR-28:
+  name: Result Copies To
+OBR-29:
+  name: Parent
+OBR-30:
+  name: Transportation Mode
+OBR-31:
+  name: Reason for Study
+OBR-32:
+  name: Principal Result Interpreter
+OBR-33:
+  name: Assistant Result Interpreter
+OBR-34:
+  name: Technician
+OBR-35:
+  name: Transcriptionist
+OBR-36:
+  name: Scheduled Date/Time
+OBR-37:
+  name: Number of Sample Containers
+OBR-38:
+  name: Transport Logistics of Collected Sample
+OBR-39:
+  name: Collector's Comment
+OBR-40:
+  name: Transport Arrangement Responsibility
+OBR-41:
+  name: Transport Arranged
+OBR-42:
+  name: Escort Required
+OBR-43:
+  name: Planned Patient Transport Comment
+OBR-44:
+  name: Ordering Facility Name
+OBR-45:
+  name: Ordering Facility Address
+OBR-46:
+  name: Ordering Facility Phone Number
+OBR-47:
+  name: Ordering Provider Address 

@@ -1,23 +1,30 @@
 ---
+Header:
+  name: Batch Header Segment 
+  version: 2.3.1
 BHS-0:
   name: Segment name
 BHS-1:
-  name: sth_bhs
+  name: Batch Field Separator
 BHS-2:
-  name: sth_bhs
+  name: Batch Encoding Characters
 BHS-3:
-  name: sth_bhs
+  name: Batch Sending Application
 BHS-4:
-  name: sth_bhs
+  name: Batch Sending Facility
 BHS-5:
-  name: sth_bhs
+  name: Batch Receiving Application
 BHS-6:
-  name: sth_bhs
+  name: Batch Receiving Facility
 BHS-7:
-  name: sth_bhs
+  name: Batch Creation Date/Time
 BHS-8:
-  name: sth_bhs
+  name: Batch Security
 BHS-9:
-  name: sth_bhs
+  name: Batch Name/ID/Type
 BHS-10:
-  name: sth_bhs
+  name: Batch Comment
+BHS-11:
+  name: Batch Control ID
+BHS-12:
+  name: Reference Batch Control ID

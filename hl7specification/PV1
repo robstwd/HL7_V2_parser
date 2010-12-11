@@ -1,43 +1,110 @@
 ---
+Header:
+  name: Patient Visit Segment 
+  version: 2.3.1
 PV1-0:
-  name: Segment name
+  name: Segment
 PV1-1:
-  name: Set ID - PID
+  name: Set ID - PV1
 PV1-2:
-  name: sth_pv1
+  name: Patient Class
 PV1-3:
-  name: sth_pv1
+  name: Assigned Patient Location
 PV1-4:
-  name: sth_pv1
+  name: Admission Type
 PV1-5:
-  name: sth_pv1
+  name: Preadmit Number
 PV1-6:
-  name: sth_pv1
+  name: Prior Patient Location
 PV1-7:
-  name: sth_pv1
+  name: Attending Doctor
 PV1-8:
-  name: sth_pv1
+  name: Referring Doctor
 PV1-9:
-  name: sth_pv1
+  name: Consulting Doctor
 PV1-10:
-  name: sth_pv1
+  name: Hospital Service
 PV1-11:
-  name: sth_pv1
+  name: Temporary Location
 PV1-12:
-  name: sth_pv1
+  name: Preadmit Test Indicator
 PV1-13:
-  name: sth_pv1
+  name: Re-admission Indicator
 PV1-14:
-  name: sth_pv1
+  name: Admit Source
 PV1-15:
-  name: sth_pv1
+  name: Ambulatory Status
 PV1-16:
-  name: sth_pv1
+  name: VIP Indicator
 PV1-17:
-  name: sth_pv1
+  name: Admitting Doctor
 PV1-18:
-  name: sth_pv1
+  name: Patient Type
 PV1-19:
-  name: sth_pv1
+  name: Visit Number
 PV1-20:
-  name: sth_pv1
+  name: Financial Class
+PV1-21:
+  name: Charge Price Indicator
+PV1-22:
+  name: Courtesy Code
+PV1-23:
+  name: Credit Rating
+PV1-24:
+  name: Contract Code
+PV1-25:
+  name: Contract Effective Date
+PV1-26:
+  name: Contract Amount
+PV1-27:
+  name: Contract Period
+PV1-28:
+  name: Interest Code
+PV1-29:
+  name: Transfer to Bad Debt Code
+PV1-30:
+  name: Transfer to Bad Debt Date
+PV1-31:
+  name: Bad Debt Agency Code
+PV1-32:
+  name: Bad Debt Transfer Amount
+PV1-33:
+  name: Bad Debt Recovery Amount
+PV1-34:
+  name: Delete Account Indicator
+PV1-35:
+  name: Delete Account Date
+PV1-36:
+  name: Discharge Disposition
+PV1-37:
+  name: Discharged to Location
+PV1-38:
+  name: Diet Type
+PV1-39:
+  name: Servicing Facility
+PV1-40:
+  name: Bed Status
+PV1-41:
+  name: Account Status
+PV1-42:
+  name: Pending Location
+PV1-43:
+  name: Prior Temporary Location
+PV1-44:
+  name: Admit Date/Time
+PV1-45:
+  name: Discharge Date/Time
+PV1-46:
+  name: Current Patient Balance
+PV1-47:
+  name: Total Charges
+PV1-48:
+  name: Total Adjustments
+PV1-49:
+  name: Total Payments
+PV1-50:
+  name: Alternate Visit ID
+PV1-51:
+  name: Visit Indicator
+PV1-52:
+  name: Other Healthcare Provider

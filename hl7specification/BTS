@@ -1,5 +1,12 @@
 ---
+Header:
+  name: Batch Trailer Segment 
+  version: 2.3.1
 BTS-0:
   name: Segment name
 BTS-1:
-  name: Set ID - PID
+  name: Batch Message Count
+BTS-2:
+  name: Batch Comment
+BTS-3:
+  name: Batch Totals
