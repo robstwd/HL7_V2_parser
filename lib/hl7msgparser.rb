@@ -33,17 +33,12 @@ module HL7parser
 			
 			# re-add an element for 'file field separator' ("|") for the segments FHS, BHS & MSH
 			encodingchar = ""										# prepare to get the value of the encoding characters for later re-insertion into the array (ie "^~\&")	
-			@raw_input.each do |segment|				# iterate over each segment
-				if segment[0] == "MSH" then				# when it is the MSH segment, then
-					segment.insert(1,"|")						# insert the value "|" into the array, at position 1
-					encodingchar = segment[2]				# collect the value of the encoding characters
-				elsif segment[0] == "BHS" then	  # when it is the BSH segment, then
-					segment.insert(1,"|")						# insert the value "|" into the array, at position 1
-				elsif segment[0] == "FHS" then	  # when it is the FSH segment, then
-					segment.insert(1,"|")						# insert the value "|" into the array, at position 1
-				end	
+			# iterate over each segment & insert the value "|" into the array, at position 1 if the segment is MSH, BHS or FHS
+			@raw_input.each do |segment|				
+				segment.insert(1,"|") if segment[0] =~ /(MSH|BHS|FHS)/
+				encodingchar = segment[2] if segment[0] =~ /(MSH|BHS|FHS)/		# collect the value of the encoding characters
 			end	
-			
+							
 			# then parse each element where multiples are present, as separated by "~" (eg "P00057804^^^^PN~4009887514^^^AUSHIC^MC~SMIAL001^^^^PI" => ["P00057804^^^^PN", "4009887514^^^AUSHIC^MC", "SMIAL001^^^^PI"])	
 			@raw_input.each do |x|						# for each array element which is one segment of the HL7 message
 				x.collect! do |y| 							# then for each field (second dimension element)
@@ -77,16 +72,8 @@ module HL7parser
 			# replace the 'encoding character' values ("^~\&")as they were removed in the above operations
 			# almost works; ie returns "FHS-2: File Encoding Characters => ["^~\\&"]"
 			# TODO: better result would be "FHS-2: File Encoding Characters => ^~\&"
-			@raw_input.each do |segment|							# iterate over each segment
-				#~ puts segment.inspect
-				if segment[0] == "MSH" then							# when it is the MSH segment, then
-					segment[2].replace([encodingchar])		# replace the existing value with the encoding characters, determined earlier (ie "^~\\&")
-				elsif segment[0] == "BHS" then					# when it is the BHS segment, then
-					segment[2].replace([encodingchar])		# replace the existing value with the encoding characters, determined earlier (ie "^~\\&")
-				elsif segment[0] == "FHS" then					# when it is the FHS segment, then
-					segment[2].replace([encodingchar])		# replace the existing value with the encoding characters, determined earlier (ie "^~\\&")
-				end	
-			end
+			# iterate over each segment, replace the existing value with the encoding characters, determined earlier if the segment is MSH, BHS or FHS
+			@raw_input.each { |segment| segment[2].replace([encodingchar]) if segment[0] =~ /(MSH|BHS|FHS)/ } 							
 			
 			# finalise the array with contents for later searching
 			@parsed_content = @raw_input
