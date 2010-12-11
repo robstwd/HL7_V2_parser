@@ -1,0 +1,259 @@
+:: File Header Segment (FHS)
+FHS-1: File Field Separator => |
+FHS-2: File Encoding Characters => ["^~\\&"]
+FHS-3: File Sending Application => PMSX21
+FHS-4: File Sending Facility => GX3261
+FHS-5: File Receiving Application => QMLPTX
+FHS-6: File Receiving Facility => QML
+FHS-7: File Creation Date/Time => 200004120817
+FHS-8: File Security => 
+FHS-9: File Name/ID => GX3261_00014373.ORM
+FHS-10: File Header Comment => 
+FHS-11: File Control ID => 2173
+
+:: Batch Header Segment (BHS)
+BHS-1: Batch Field Separator => |
+BHS-2: Batch Encoding Characters => ["^~\\&"]
+BHS-3: Batch Sending Application => PMSX21
+BHS-4: Batch Sending Facility => GX3261
+BHS-5: Batch Receiving Application => QMLPTX
+BHS-6: Batch Receiving Facility => QML
+BHS-7: Batch Creation Date/Time => 200004120817
+BHS-8: Batch Security => 
+BHS-9: Batch Name/ID/Type => GX3261_00014373.ORM
+BHS-10: Batch Comment => 
+BHS-11: Batch Control ID => 2173
+
+:: Message Header Segment (MSH)
+MSH-1: Field Separator => |
+MSH-2: Encoding Characters => ["^~\\&"]
+MSH-3: Sending Application => PMSX21
+MSH-4: Sending Facility => GX3261
+MSH-5: Receiving Application => QMLPTX
+MSH-6: Receiving Facility => ["QML", "2184", "AUSNATA"]
+MSH-7: Date/Time Of Message => 200004120817
+MSH-8: Security => 
+MSH-9: Message Type => ["ORM", "O01", "ORM_O01"]
+MSH-10: Message Control ID => GX3261_20000412-2.211
+MSH-11: Processing ID => P
+MSH-12: Version ID => 2.3.1
+MSH-13: Sequence Number => 2173
+MSH-14: Continuation Pointer => 
+MSH-15: Accept Acknowledgment Type => AL
+MSH-16: Application Acknowledgment Type => AL
+MSH-17: Country Code => AUS
+
+:: Patient Identification Segment (PID)
+PID-1: Set ID - PID => 1
+PID-2: Patient ID => 
+PID-3: Patient Identifier List => [["P00057804", "", "", "", "PN"], ["4009887514", "", "", "AUSHIC", "MC"], ["SMIAL001", "", "", "", "PI"]]
+PID-4: Alternate Patient ID - PID => 
+PID-5: Patient Name => ["SMITH", "Alan", "Ross", "", "Mr"]
+PID-6: Mother’s Maiden Name => 
+PID-7: Date/Time of Birth => 19770621
+PID-8: Sex => M
+PID-9: Patient Alias => 
+PID-10: Race => 
+PID-11: Patient Address => ["818 Beach Road", "", "BEECHMERE", "", "4510", "AU", "H"]
+
+:: Patient Visit Segment (PV1)
+PV1-1: Set ID - PV1 => 1
+PV1-2: Patient Class => I
+PV1-3: Assigned Patient Location => 
+PV1-4: Admission Type => 
+PV1-5: Preadmit Number => 
+PV1-6: Prior Patient Location => 
+PV1-7: Attending Doctor => 
+PV1-8: Referring Doctor => ["045678AB", "HANDY", "JOHN", "", "", "Dr", "", "", "AUSHICPR"]
+PV1-9: Consulting Doctor => ["045678AB", "HANDY", "JOHN", "", "", "Dr", "", "", "AUSHICPR"]
+PV1-10: Hospital Service => 
+PV1-11: Temporary Location => 
+PV1-12: Preadmit Test Indicator => 
+PV1-13: Re-admission Indicator => 
+PV1-14: Admit Source => 
+PV1-15: Ambulatory Status => 
+PV1-16: VIP Indicator => 
+PV1-17: Admitting Doctor => 
+PV1-18: Patient Type => 
+PV1-19: Visit Number => 
+PV1-20: Financial Class => SCHEDULE
+
+:: Common Order Segment (ORC)
+ORC-1: Order Control => NW
+ORC-2: Placer Order Number => ["173-0", "GX3261"]
+ORC-3: Filler Order Number => 
+ORC-4: Placer Group Number => ["173", "GX3261"]
+ORC-5: Order Status => IP
+ORC-6: Response Flag => 
+ORC-7: Quantity/Timing => 
+ORC-8: Parent => 
+ORC-9: Date/Time of Transaction => 200004120817
+ORC-10: Entered By => 
+ORC-11: Verified By => 
+ORC-12: Ordering Provider => 045678AB
+
+:: Observation Request Segment (OBR)
+OBR-1: Set ID OBR => 1
+OBR-2: Placer Order Number => ["173-0", "GX3261"]
+OBR-3: Filler Order Number => 
+OBR-4: Universal Service ID => ["VAN", "VANCOMYCIN(PRE/POST),S", "NATA2184-2"]
+OBR-5: Priority => 
+OBR-6: Requested Date/time => 
+OBR-7: Observation Date/Time => 
+OBR-8: Observation End Date/Time => 
+OBR-9: Collection Volume => 
+OBR-10: Collector Identifier => L
+OBR-11: Specimen Action Code => L
+OBR-12: Danger Code => 
+OBR-13: Relevant Clinical Info. => 
+OBR-14: Specimen Received Date/Time => 
+OBR-15: Specimen Source => 
+OBR-16: Ordering Provider => ["045678AB", "HANDY", "JOHN", "", "", "Dr"]
+OBR-17: Order Callback Phone Number => 
+OBR-18: Placer Field 1 => 
+OBR-19: Placer Field 2 => 
+OBR-20: Filler Field 1 => 
+OBR-21: Filler Field 2 => 
+OBR-22: Results Rpt/Status Chng - Date/Time => 
+OBR-23: Charge to Practice => 
+OBR-24: Diagnostic Serv Sect ID => 
+OBR-25: Result Status => 
+OBR-26: Parent Result => 
+OBR-27: Quantity/Timing => ["", "", "", "200004120817", "", "R"]
+
+:: Common Order Segment (ORC)
+ORC-1: Order Control => NW
+ORC-2: Placer Order Number => ["173-1", "GX3261"]
+ORC-3: Filler Order Number => 
+ORC-4: Placer Group Number => ["173", "GX3261"]
+ORC-5: Order Status => IP
+ORC-6: Response Flag => 
+ORC-7: Quantity/Timing => 
+ORC-8: Parent => 
+ORC-9: Date/Time of Transaction => 200004120817
+ORC-10: Entered By => 
+ORC-11: Verified By => 
+ORC-12: Ordering Provider => 045678AB
+
+:: Observation Request Segment (OBR)
+OBR-1: Set ID OBR => 2
+OBR-2: Placer Order Number => ["173-1", "GX3261"]
+OBR-3: Filler Order Number => 
+OBR-4: Universal Service ID => ["GAM", "IMMUNOGLOBULINS,SERUM", "NATA2184-2"]
+OBR-5: Priority => 
+OBR-6: Requested Date/time => 
+OBR-7: Observation Date/Time => 
+OBR-8: Observation End Date/Time => 
+OBR-9: Collection Volume => 
+OBR-10: Collector Identifier => L
+OBR-11: Specimen Action Code => L
+OBR-12: Danger Code => 
+OBR-13: Relevant Clinical Info. => 
+OBR-14: Specimen Received Date/Time => 
+OBR-15: Specimen Source => 
+OBR-16: Ordering Provider => ["045678AB", "HANDY", "JOHN", "", "", "Dr"]
+OBR-17: Order Callback Phone Number => 
+OBR-18: Placer Field 1 => 
+OBR-19: Placer Field 2 => 
+OBR-20: Filler Field 1 => 
+OBR-21: Filler Field 2 => 
+OBR-22: Results Rpt/Status Chng - Date/Time => 
+OBR-23: Charge to Practice => 
+OBR-24: Diagnostic Serv Sect ID => 
+OBR-25: Result Status => 
+OBR-26: Parent Result => 
+OBR-27: Quantity/Timing => ["", "", "", "200004120817", "", "R"]
+
+:: Common Order Segment (ORC)
+ORC-1: Order Control => NW
+ORC-2: Placer Order Number => ["173-2", "GX3261"]
+ORC-3: Filler Order Number => 
+ORC-4: Placer Group Number => ["173", "GX3261"]
+ORC-5: Order Status => IP
+ORC-6: Response Flag => 
+ORC-7: Quantity/Timing => 
+ORC-8: Parent => 
+ORC-9: Date/Time of Transaction => 200004120817
+ORC-10: Entered By => 
+ORC-11: Verified By => 
+ORC-12: Ordering Provider => 045678AB
+
+:: Observation Request Segment (OBR)
+OBR-1: Set ID OBR => 3
+OBR-2: Placer Order Number => ["173-2", "GX3261"]
+OBR-3: Filler Order Number => 
+OBR-4: Universal Service ID => ["FBC", "FULL BLOOD EXAMINATION", "NATA2184-4"]
+OBR-5: Priority => 
+OBR-6: Requested Date/time => 
+OBR-7: Observation Date/Time => 
+OBR-8: Observation End Date/Time => 
+OBR-9: Collection Volume => 
+OBR-10: Collector Identifier => L
+OBR-11: Specimen Action Code => L
+OBR-12: Danger Code => 
+OBR-13: Relevant Clinical Info. => 
+OBR-14: Specimen Received Date/Time => 
+OBR-15: Specimen Source => 
+OBR-16: Ordering Provider => ["045678AB", "HANDY", "JOHN", "", "", "Dr", "", "", "AUSHICPR"]
+OBR-17: Order Callback Phone Number => 
+OBR-18: Placer Field 1 => 
+OBR-19: Placer Field 2 => 
+OBR-20: Filler Field 1 => 
+OBR-21: Filler Field 2 => 
+OBR-22: Results Rpt/Status Chng - Date/Time => 
+OBR-23: Charge to Practice => 
+OBR-24: Diagnostic Serv Sect ID => 
+OBR-25: Result Status => 
+OBR-26: Parent Result => 
+OBR-27: Quantity/Timing => ["", "", "", "200004120817", "", "R"]
+OBR-28: Result Copies To => ["0321654B", "JONES", "ROBYN", "", "", "Dr", "", "", "AUSHICPR"]
+
+:: Common Order Segment (ORC)
+ORC-1: Order Control => NW
+ORC-2: Placer Order Number => ["173-3", "GX3261"]
+ORC-3: Filler Order Number => 
+ORC-4: Placer Group Number => ["173", "GX3261"]
+ORC-5: Order Status => IP
+ORC-6: Response Flag => 
+ORC-7: Quantity/Timing => 
+ORC-8: Parent => 
+ORC-9: Date/Time of Transaction => 200004120817
+ORC-10: Entered By => 
+ORC-11: Verified By => 
+ORC-12: Ordering Provider => 045678AB
+
+:: Observation Request Segment (OBR)
+OBR-1: Set ID OBR => 4
+OBR-2: Placer Order Number => ["173-3", "GX3261"]
+OBR-3: Filler Order Number => 
+OBR-4: Universal Service ID => ["HAB", "HEPATITIS A \\T\\ B ACUTE", "NATA2184-1"]
+OBR-5: Priority => 
+OBR-6: Requested Date/time => 
+OBR-7: Observation Date/Time => 
+OBR-8: Observation End Date/Time => 
+OBR-9: Collection Volume => 
+OBR-10: Collector Identifier => L
+OBR-11: Specimen Action Code => L
+OBR-12: Danger Code => 
+OBR-13: Relevant Clinical Info. => 
+OBR-14: Specimen Received Date/Time => 
+OBR-15: Specimen Source => 
+OBR-16: Ordering Provider => ["045678AB", "HANDY", "JOHN", "", "", "Dr", "", "", "AUSHICPR"]
+OBR-17: Order Callback Phone Number => 
+OBR-18: Placer Field 1 => 
+OBR-19: Placer Field 2 => 
+OBR-20: Filler Field 1 => 
+OBR-21: Filler Field 2 => 
+OBR-22: Results Rpt/Status Chng - Date/Time => 
+OBR-23: Charge to Practice => 
+OBR-24: Diagnostic Serv Sect ID => 
+OBR-25: Result Status => 
+OBR-26: Parent Result => 
+OBR-27: Quantity/Timing => ["", "", "", "200004120817", "", "R"]
+
+:: Batch Trailer Segment (BTS)
+BTS-1: Batch Message Count => 1
+
+:: File Trailer Segment (FTS)
+FTS-1: File batch Count => 1
+FTS-2: File Trailer Comment => 2173
