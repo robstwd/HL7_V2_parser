@@ -1,4 +1,6 @@
 ---
+FTS-0:
+  name: Segment name
 FTS-1:
   name: Set ID - PID
 FTS-2:

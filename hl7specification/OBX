@@ -1,4 +1,6 @@
 ---
+OBX-0:
+  name: Segment name
 OBX-1:
   name: Set ID - PID
 OBX-2:

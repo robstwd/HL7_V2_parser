@@ -1,3 +1,5 @@
 ---
+BTS-0:
+  name: Segment name
 BTS-1:
   name: Set ID - PID

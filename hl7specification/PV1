@@ -1,4 +1,6 @@
 ---
+PV1-0:
+  name: Segment name
 PV1-1:
   name: Set ID - PID
 PV1-2:

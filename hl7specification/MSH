@@ -1,7 +1,9 @@
 ---
+MSH-0:
+  name: Segment name
 MSH-1:
   name: Set ID - PID
-H-2:
+MSH-2:
   name: sth_msh
 MSH-3:
   name: sth_msh

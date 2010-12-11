@@ -98,26 +98,31 @@ module HL7parser
 	  end	 # << end getvalue method
 
 	  def print_segments
+		# METHOD: after all of the HL7 content has been parsed, print the contents of each segment in a mor eeasily readible format
 			
 			# iterate over each segment
 			@parsed_content.each do |segment|
-				seg = segment[0]																  # seg => "PID"
+				seg = segment[0]																  # eg => "PID"
 				
 				#get yaml file details
-				yamlfile  = "../hl7specification/#{seg}"
-				details   = YAML.load_file(yamlfile)
+				yamlfile  = "../hl7specification/#{seg}"					# for each segment, find the appropriate yaml file (ie one for each segment)
+				specs     = YAML.load_file(yamlfile)							# load the yaml file
 				
-			  puts ":: Segment: #{seg}"				                  # print the text eg ":: Segment: 4 PID"
-				segment.each_with_index do |field, index|					# then for each field in the particular segment
-					fld = "#{seg}-#{index}"									       	# fld => "PID-5"
-					print "#{fld}: <<name>> => "						       	# on each line print "PID-5: <<name>> => "
-					#~ name = details[fld]["name"]
-					if field.class == String then												# if the field is a string...
-						#~ puts "#{details[fld]["name"]} => #{field}"			# then just print the string with a label eg "PID-7: 19770621"
-						puts field
-					elsif field.class == Array then											# otherwise if the field is an array, ie there is lower level structure...
-						#~ puts "#{fld}: #{details[fld]["name"]} => #{field.inspect}"		      # then print the structure viz => PID-5: ["SMITH", "Alan", "Ross", "", "Mr"]
-						puts field.inspect	
+			  puts ":: Segment: #{seg}"				                  # print the text eg ":: Segment: PID"
+			  
+			  # then iterate over each field in the particular segment
+				segment.each_with_index do |field, index|					# then for each field...
+					fld = "#{seg}-#{index}"									       	# get the field id => "PID-5"
+					print "#{fld}: "						       							# on each line print the particular field being queried eg "PID-5: "
+					fldname = specs[fld]["name"]							# get the name of the field from the yaml file
+					#~ fldname = specs[fld]["name"]
+					print "#{fldname} => "
+					if field.class == String then										# if the field is a string...
+						#~ puts "#{details[fld]["name"]} => #{field}"
+						puts field																		# then just print the value of the string eg "PID-7 => 19770621"
+					elsif field.class == Array then									# otherwise if the field is an array, ie there is lower level structure...
+						#~ puts "#{fld}: #{details[fld]["name"]} => #{field.inspect}"		      
+						puts field.inspect														# then print the structure viz => PID-5 => ["SMITH", "Alan", "Ross", "", "Mr"]
 					end  
 				end	
 				puts	
@@ -128,9 +133,3 @@ module HL7parser
 	end  # << end Message class
 
 end  # << end HL7parser module
-
-		
-        # initialise the variable holding the complete YAML file contents, as a hash
-    #~ @detail       = @details[@station]                       # get just the detail pertaining to the station of interest
-    #~ @url          = "#{@@baseurl}#{@detail["id"]}"           # construct the full internode URL, using the base and the looked up ID number for the particular station
-    #~ @stationname  = @detail["title"]  

@@ -1,4 +1,6 @@
 ---
+BHS-0:
+  name: Segment name
 BHS-1:
   name: sth_bhs
 BHS-2:

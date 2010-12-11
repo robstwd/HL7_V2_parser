@@ -1,4 +1,6 @@
 ---
+OBR-0:
+  name: Segment name
 OBR-1:
   name: Set ID - PID
 OBR-2:
@@ -52,4 +54,10 @@ OBR-25:
 OBR-26:
   name: sth_obr
 OBR-27:
+  name: sth_obr
+OBR-28:
+  name: sth_obr
+OBR-29:
+  name: sth_obr
+OBR-30:
   name: sth_obr
