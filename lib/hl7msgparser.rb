@@ -99,7 +99,21 @@ module HL7parser
 
 	  def print_segments
 		# METHOD: after all of the HL7 content has been parsed, print the contents of each segment in a mor eeasily readible format
-			
+		# output for 1 segment looks like:
+					#~ :: Segment: PID
+					#~ PID-0: Segment => PID
+					#~ PID-1: Set ID - PID => 1
+					#~ PID-2: Patient ID => 
+					#~ PID-3: Patient Identifier List => [["P00057804", "", "", "", "PN"], ["4009887514", "", "", "AUSHIC", "MC"], ["SMIAL001", "", "", "", "PI"]]
+					#~ PID-4: Alternate Patient ID - PID => 
+					#~ PID-5: Patient Name => ["SMITH", "Alan", "Ross", "", "Mr"]
+					#~ PID-6: Mother’s Maiden Name => 
+					#~ PID-7: Date/Time of Birth => 19770621
+					#~ PID-8: Sex => M
+					#~ PID-9: Patient Alias => 
+					#~ PID-10: Race => 
+					#~ PID-11: Patient Address => ["818 Beach Road", "", "BEECHMERE", "", "4510", "AU", "H"]
+
 			# iterate over each segment
 			@parsed_content.each do |segment|
 				seg = segment[0]																  # eg => "PID"
@@ -114,15 +128,12 @@ module HL7parser
 				segment.each_with_index do |field, index|					# then for each field...
 					fld = "#{seg}-#{index}"									       	# get the field id => "PID-5"
 					print "#{fld}: "						       							# on each line print the particular field being queried eg "PID-5: "
-					fldname = specs[fld]["name"]							# get the name of the field from the yaml file
-					#~ fldname = specs[fld]["name"]
-					print "#{fldname} => "
-					if field.class == String then										# if the field is a string...
-						#~ puts "#{details[fld]["name"]} => #{field}"
-						puts field																		# then just print the value of the string eg "PID-7 => 19770621"
+					fldname = specs[fld]["name"]										# get the name of the field from the yaml file
+					print "#{fldname} => "													# print the field name after the field eg "PID-5: Patient Name"
+					if field.class == String then										# if the field class is a string...
+						puts field																		# then just print (ie add) the value of the string eg "PID-7: Date/Time of Birth => 19770621"
 					elsif field.class == Array then									# otherwise if the field is an array, ie there is lower level structure...
-						#~ puts "#{fld}: #{details[fld]["name"]} => #{field.inspect}"		      
-						puts field.inspect														# then print the structure viz => PID-5 => ["SMITH", "Alan", "Ross", "", "Mr"]
+						puts field.inspect														# then print the structure eg "PID-5 Patient Name => ["SMITH", "Alan", "Ross", "", "Mr"]"
 					end  
 				end	
 				puts	
