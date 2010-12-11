@@ -16,8 +16,13 @@ puts "Patient's Date/Time of Birth (PID-7): #{Date.parse(msg.getvalue("PID-7"))}
 puts
 puts "complete PID segment: #{msg.getvalue("PID")}"
 puts
-puts "HL7 message version number (MSH-11): #{msg.getvalue("MSH-11")}"
+puts "HL7 message version number (MSH-12): #{msg.getvalue("MSH-12")}"
 puts
-puts "Message sent at (MSH-6): #{Time.parse(msg.getvalue("MSH-6"))}"
+puts "Message sent at (MSH-7): #{Time.parse(msg.getvalue("MSH-7"))}"
 puts
+puts "complete FHS segment: #{msg.getvalue("FHS")}"
+puts
+puts "complete BHS segment: #{msg.getvalue("BHS")}"
+puts
+puts "complete MSH segment: #{msg.getvalue("MSH")}"
 msg.print_segments

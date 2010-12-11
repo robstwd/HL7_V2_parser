@@ -30,6 +30,19 @@ module HL7parser
 			# and the second dimension representing each field within the segment
 			@raw_input.collect! { |x| x.split("|")}
 			
+			# re-add an element for 'file field separator' ("|") for the segments FHS, BHS & MSH
+			@raw_input.each do |segment|
+				if segment[0] == "MSH" then
+					segment.insert(1,"|")		# insert into the array, into position 1, the value "|"
+				elsif segment[0] == "BHS" then
+					segment.insert(1,"|")		# insert into the array, into position 1, the value "|"
+				elsif segment[0] == "FHS" then
+					segment.insert(1,"|")		# insert into the array, into position 1, the value "|"	
+				end	
+			end	
+			
+			puts @raw_input.inspect
+			
 			# then parse each element where multiples are present, as separated by "~" (eg "P00057804^^^^PN~4009887514^^^AUSHIC^MC~SMIAL001^^^^PI" => ["P00057804^^^^PN", "4009887514^^^AUSHIC^MC", "SMIAL001^^^^PI"])	
 			@raw_input.each do |x|						# for each array element which is one segment of the HL7 message
 				x.collect! do |y| 							# then for each field (second dimension element)
