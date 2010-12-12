@@ -143,7 +143,7 @@ module HL7parser
 				segment.each_with_index do |field, index|					# then for each field...
 					if index > 0 then																# only if the index is 1 or more (ie the first value is not useful here)
 						fld = "#{seg}-#{index}"									      # get the field id => "PID-5"
-						print "#{fld}: "						       						# on each line print the particular field being queried eg "PID-5: "
+						print " #{fld}: "						       						# on each line print the particular field being queried eg "PID-5: "
 						fldname = specs[fld]["name"]									# get the name of the field from the yaml file
 						print "#{fldname} => "												# print the field name after the field eg "PID-5: Patient Name"
 						if field.class == String then									# if the field class is a string...
