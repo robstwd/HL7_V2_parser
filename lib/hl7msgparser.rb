@@ -134,7 +134,7 @@ module HL7parser
 				seg = segment[0]																  # eg => "PID"
 				
 				#get yaml file details
-				yamlfile  = "../hl7specification/#{seg}"					# for each segment, find the appropriate yaml file (ie one for each segment)
+				yamlfile  = "hl7specification/#{seg}"					# for each segment, find the appropriate yaml file (ie one for each segment)
 				specs     = YAML.load_file(yamlfile)							# load the yaml file
 				
 			  puts ":: #{specs["Header"]["name"]} (#{seg})"			# print the text eg ":: Message Header Segment (MSH)"
