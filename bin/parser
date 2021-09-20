@@ -6,7 +6,7 @@ require 'time'
 require_relative '../lib/hl7msgparser'
 
 # invocation tests
-file = "/home/rob/scripts/Projects/HL7_parser/samples/order_test.hl7"
+file = "samples/order_test.hl7"
 msg = HL7parser::Message.new(file)
 msg.parse_contents
 
