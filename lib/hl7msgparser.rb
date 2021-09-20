@@ -81,7 +81,7 @@ module HL7parser
 		end	  # << end parse_contents method
 	  
 	  def getvalue(element)
-	  # METHOD: returns the value of a given aspoect of teh message by virtue of its position
+	  # METHOD: returns the value of a given aspect of the message by virtue of its position
 	  # allows returning the segment value in total eg getvalue("PID"), down to the atomic element eg getvalue("PID-5-2")
  	  
 			# separate the single arguemnt passed into the various elements
@@ -113,7 +113,7 @@ module HL7parser
 	  end	 # << end getvalue method
 
 	  def print_segments
-		# METHOD: after all of the HL7 content has been parsed, print the contents of each segment in a mor eeasily readible format
+		# METHOD: after all of the HL7 content has been parsed, print the contents of each segment in a more easily readible format
 		# output for 1 segment looks like:
 					#~ :: Segment: PID
 					#~ PID-0: Segment => PID
